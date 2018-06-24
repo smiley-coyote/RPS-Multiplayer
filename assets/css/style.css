@@ -1,0 +1,77 @@
+h1 { 
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+h3 { 
+    display: block;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+.wrapper {
+    position: relative;
+    width: 100%;
+    top: 0;
+}
+header {
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+}
+.main-body {
+    width: 960px;
+    height: 500px;
+    margin: 0 auto;
+    border: 8px solid black;
+    border-radius: 15px;
+}
+#player-1 {
+    position: relative;
+    float: left;
+    text-align: center;
+    width: 240px;
+    height: 100%;
+    margin: 0;
+}
+#player-2 {
+    position: relative;
+    float: right;
+    text-align: center;
+    width: 240px;
+    height: 100%;
+    
+}
+#game-start {
+    width: 480px;
+    height: 100%;
+    margin: 0 auto;
+}
+#game-select {
+    position: relative;
+    width: 480px;
+    top: 25%;
+    height: 50%;
+    text-align: center;
+}
+#game-select h2 {
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
