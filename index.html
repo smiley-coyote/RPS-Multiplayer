@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,34 +8,53 @@
     <title>RPS-Multiplayer</title>
     <link href="assets/css/reset.css" type="text/css" rel="stylesheet">
     <link href="assets/css/style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
 </head>
+
 <body>
-    <div class="wrapper">
-        <header>
-            <h1>Rock! Paper! Scissors!</h1>
-        </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1>ROCK PAPER SCISSORS</h1>
+            </div>
+        </div>
     </div>
-    <div class="wrapper">
-        <div class="main-body">
-            <div id="player-1"></div>
-            <div id="player-2"></div>
-            <div id="game-start">
-                <div id="game-select">
-                    <span id="player">
-                    <h2>Player 1:</h2>
-                    <h2>Enter your name</h2>
-                    </span>
-                    <form>
-                        <input type="text" id="player-input">
-                        <button type="submit" id="player-submit">submit</button>
-                    </form>
+    <div class="container">
+        <div class="row" id="main-body">
+            <div class="col-md-4 text-center">
+                <span id="player1-ID"></span>
+                <div id="player1-box"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span id="player1-buttons"></span>
+                    </div>
                 </div>
             </div>
+            <div class="col-md-4 text-center" id="middle">
+                <span id="game-start">
+                <h2>Enter name:</h2>
+                <form>
+                <input type="text" class="form-control" id="player-name">
+                <button type="button" class="btn-primary" id="player-submit">start</button>
+                </form>
+            </span>
             
+            </div>
+            <div class="col-md-4 text-center">
+                <span id="player2-ID"></span>
+                <div id="player2-box"></div>
+                <div class="row">
+                        <div class="col-md-12">
+                            <span id="player2-buttons"></span>
+                        </div>
+                    </div>
+            </div>
         </div>
     </div>
 </body>
-    <script src="assets/javascript/app.js"></script>
+<script src="assets/javascript/app.js"></script>
+
 </html>
