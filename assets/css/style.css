@@ -1,8 +1,11 @@
 body{
     background-image: url("../images/chinesepainting.jpg");
     background-size: 1500px auto;
+    font-family: 'Merienda One', cursive !important;
 }
-
+#header {
+    margin-top: 50px;
+}
 #main-body{
     height: 300px;
     
@@ -78,4 +81,13 @@ body{
     background-repeat: no-repeat;
     background-size: 60px;
     background-position: center; 
+}
+#chat-box {
+    background-color: white;
+    width: 400px;
+    height: 100px;
+    border: 2px solid black;
+}
+#results, #player1-choice, #player2-choice {
+    margin-top: 100px;
 }

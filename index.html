@@ -12,13 +12,16 @@
         crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
+    <div class="container" id="header">
+        <div class="row" >
             <div class="col-md-12 text-center">
-                <h1>ROCK PAPER SCISSORS</h1>
+                <div id="title">
+                <h1 id="title">rock. paper. scissors.</h1>
+                </div>
             </div>
         </div>
     </div>
@@ -43,7 +46,7 @@
                     <div class="col-md-4">
                         <div id="player1-choice"></div>
                     </div>
-                    <div class="col-md-4" id="results">
+                    <div class="col-md-4">
                     <span id="game-start">
                         <h3>Enter name:</h3>
                         <form>
@@ -51,11 +54,31 @@
                             <button type="button" class="btn-primary" id="player-submit">start</button>
                         </form>
                     </span>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="results">
+                                
+                            </div>
+                        </div>
+                    </div>
                     </div>
                     <div class="col-md-4">
                         <div id="player2-choice"></div>
                     </div>
                 </div>
+                <!-- <div class="row">
+                    <div class="col-md-12">
+                        <div id="chat-box"></div>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="col-md-12">
+                           <form>
+                               <input type="text" class="form-control" id="chat-input">
+                               <button type="button" class="btn-primary" id="chat-submit">submit</button>
+                           </form>
+                        </div>
+                    </div> -->
             </div>
             <div class="col-md-4 text-center">
                 <span id="player2-ID"></span>

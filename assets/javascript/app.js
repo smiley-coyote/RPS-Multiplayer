@@ -27,6 +27,7 @@ var player1Wins = 0;
 var player2Wins = 0;
 var player1Losses = 0;
 var player2Losses = 0;
+var message;
 
 
 $(document).ready(function(){
@@ -281,6 +282,17 @@ $(document).on("click", ".restart", function(){
   })
   location.reload();
   
+})
+database.ref("chatroom/").on("value", function(snapshot){
+  var userName = snapshot.user;
+  $("#chat-box").append("<p>" + userName + ": " + message)
+})
+$(document).on("click", "#chat-submit", function(){
+  message = $("#chat-input").val().trim();
+  database.ref("chatroom/").update({
+    message: message,
+    user: curUser
+  })
 })
 })
 
