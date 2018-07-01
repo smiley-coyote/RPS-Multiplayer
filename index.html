@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container" id="main">
         <div class="row" id="main-body">
             <div class="col-md-4 text-center">
                 <span id="player1-ID"></span>
@@ -31,26 +31,45 @@
                     <div class="col-md-12">
                         <span id="player1-buttons"></span>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span id="player1-stats"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4 text-center" id="middle">
-                <span id="game-start">
-                <h2>Enter name:</h2>
-                <form>
-                <input type="text" class="form-control" id="player-name">
-                <button type="button" class="btn-primary" id="player-submit">start</button>
-                </form>
-            </span>
-            
+                <div class="row">
+                    <div class="col-md-4">
+                        <div id="player1-choice"></div>
+                    </div>
+                    <div class="col-md-4" id="results">
+                    <span id="game-start">
+                        <h3>Enter name:</h3>
+                        <form>
+                            <input type="text" class="form-control" id="player-name">
+                            <button type="button" class="btn-primary" id="player-submit">start</button>
+                        </form>
+                    </span>
+                    </div>
+                    <div class="col-md-4">
+                        <div id="player2-choice"></div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-4 text-center">
                 <span id="player2-ID"></span>
                 <div id="player2-box"></div>
                 <div class="row">
-                        <div class="col-md-12">
-                            <span id="player2-buttons"></span>
-                        </div>
+                    <div class="col-md-12">
+                        <span id="player2-buttons"></span>
                     </div>
+                    <div class="row">
+                            <div class="col-md-12">
+                                <span id="player2-stats"></span>
+                            </div>
+                        </div>
+                </div>
             </div>
         </div>
     </div>

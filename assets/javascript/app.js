@@ -21,8 +21,24 @@ var player2Name;
 var gameStart = false;
 var player1Choice = "";
 var player2Choice = "";
+var disconnect = firebase.database().ref();
+var playerOnline;
+var player1Wins = 0;
+var player2Wins = 0;
+var player1Losses = 0;
+var player2Losses = 0;
 
 
+$(document).ready(function(){
+  database.ref().update({
+    playerOnline: true
+  })
+  database.ref("player1/").update({
+    rps: ""
+  })
+  database.ref("player2/").update({
+    rps: ""
+  })
 database.ref().on("value", function(snapshot) {
   
   var seats = parseInt(snapshot.val().seats);
@@ -33,11 +49,14 @@ database.ref().on("value", function(snapshot) {
   
   if(curUser !== undefined && seats == 2 && !playerSelect){
     playerSelect = true;
-    $("#player1-ID").html("<h1>" + curUser + "</h1>")
-    $("#player2-ID").html("<h1>Waiting for player 2 to start...</h1>")
+    $("#player1-ID").html("<h2>" + curUser + "</h2>")
+    $("#player2-ID").html("<h2>Waiting for player 2 to start...</h2>")
     player1();
    database.ref().update({
      seats: 1
+   })
+   database.ref().update({
+     playerOnline: true
    })
    database.ref("player1/").update({
      name: curUser
@@ -49,7 +68,7 @@ database.ref().on("value", function(snapshot) {
     player1Name = snapshot.val().player1.name;
     
     $("#player1-box").html("<h2>" + player1Name + " is ready to play</h2>")
-    $("#player2-ID").html("<h1>" + curUser + "</h1>")
+    $("#player2-ID").html("<h2>" + curUser + "</h2>")
     player2();
     database.ref().update({
       seats: 0
@@ -67,7 +86,7 @@ database.ref().on("value", function(snapshot) {
     player1Name = snapshot.val().player1.name;
     $("#player2-ID").html("<h1>" + player2Name + "</h1>")
 
-  }
+  } 
 
 })
 
@@ -193,22 +212,82 @@ database.ref("playerChoice/").on("value", function(snapshot){
  
 })
 
-
+database.ref().on("value", function(snapshot){
+  playerOnline = snapshot.val().playerOnline;
+  var seatsLeft = parseInt(snapshot.val().seats);
+  if(playerOnline == false && seatsLeft == 2){
+    
+      restartGame();
+    
+  }
+})
 
 function playerTie(){
-  console.log("ITS A TIE")
+  $("#player1-choice").text(player1Name + " plays " + player1Choice);
+  $("#player2-choice").text(player2Name + " plays " + player2Choice);
+  $("#results").text("It is a tie!")
 }
 function playerOneWin(){
-  console.log("PLAYER ONE WINS")
+  player1Wins++;
+  player2Losses++;
+  database.ref("player1/").update({
+    wins: player1Wins
+  })
+  database.ref("player2/").update({
+    losses: player2Losses
+  })
+  $("#player1-choice").text(player1Name + " plays " + player1Choice);
+  $("#player2-choice").text(player2Name + " plays " + player2Choice);
+  $("#results").text(player1Name + " wins!")
+
+  $("#player1-stats").html("<p>Wins: " + player1Wins + " Losses: " + player1Losses)
+  $("#player2-stats").html("<p>Wins: " + player2Wins + " Losses: " + player2Losses)
 }
 function playerOneLose(){
-  console.log("PLAYER ONE LOSES")
+  player1Losses++;
+  player2Wins++;
+  database.ref("player1/").update({
+    losses: player1Losses
+  })
+  database.ref("player2/").update({
+    wins: player2Wins
+  })
+  $("#player1-choice").text(player1Name + " plays " + player1Choice);
+  $("#player2-choice").text(player2Name + " plays " + player2Choice);
+  $("#results").text(player2Name + " wins!")
+  $("#player1-stats").html("<p>Wins: " + player1Wins + " Losses: " + player1Losses)
+  $("#player2-stats").html("<p>Wins: " + player2Wins + " Losses: " + player2Losses)
 }
 
 
 
+function restartGame() {
+      $("#game-start").html("<h2>Player disconnected. Please restart game</h2>")
+      $("#player1-ID").html("");
+      $("#player1-ID").html("");
+      $("#player1-box").html("");
+      $("#player2-box").html("");
+      $("#player1-buttons").html("");
+      $("#player2-buttons").html("");
+      var newButton = $("<button>restart</button>");
+      newButton.addClass("restart");
+      $("#game-start").append(newButton)
+    }
 
 
+$(document).on("click", ".restart", function(){
+  database.ref().update({
+    playerOnline: true
+  })
+  location.reload();
+  
+})
+})
+
+disconnect.onDisconnect().update({
+  seats: 2,
+  playerOnline: false
+})
 /*
 var counter = 1;
 
@@ -290,7 +369,7 @@ function updateUI(messages) {
 // var player1Select = false;
 // var database = firebase.database();
 
-// $(document).on("click", "#player-submit", function () {
+// $($().on("click", "#player-submit", function () {
 //     event.preventDefault();
 //     if (!player1Select) {
 //         player1 = $("#player-input").val().trim();
