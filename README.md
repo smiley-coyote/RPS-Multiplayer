@@ -6,7 +6,7 @@ both challenge each other to several rounds of RPS!
 Link to game:
 https://smiley-coyote.github.io/RPS-Multiplayer/
 
-##Technologies
+## Technologies
 HTML5
 CSS
 JavaScript
