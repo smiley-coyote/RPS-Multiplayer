@@ -7,8 +7,8 @@ Link to game:
 https://smiley-coyote.github.io/RPS-Multiplayer/
 
 ## Technologies
-HTML5
-CSS
-JavaScript
-Firebase
+* HTML5
+* CSS
+* JavaScript
+* Firebase
 
